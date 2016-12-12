@@ -1,8 +1,13 @@
 package upmc.ri.struct.instantiation;
 
+import org.ejml.data.D1Matrix64F;
+import org.ejml.data.DenseMatrix64F;
+import org.ejml.ops.MatrixVisualization;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.List;
 
 /**
  * Created by dexter on 26/11/2016.
@@ -57,5 +62,21 @@ public class MultiClass implements IStructInstantiation<double [], String>{
     @Override
     public Set<String> enumerateY() {
         return this.label_set;
+    }
+
+    public void confusionMatrix(List<String> predictions, List<String> gt){
+        D1Matrix64F conf = new DenseMatrix64F(this.label_set.size(), this.label_set.size());
+        for (String i : predictions){
+            for (String j : gt){
+                conf.set(this.matching.get(i), this.matching.get(j),0);
+            }
+        }
+        for (int i = 0; i < gt.size(); i++){
+            int idPred = this.matching.get(predictions.get(i));
+            int idGt = this.matching.get(gt.get(i));
+            conf.set(idPred, idGt, conf.get(idPred, idGt) + 1);
+        }
+        MatrixVisualization.show(conf, "Confusion Matrix");
+
     }
 }

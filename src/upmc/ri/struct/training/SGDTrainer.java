@@ -59,7 +59,7 @@ public class SGDTrainer<X, Y> implements ITrainer<X, Y> {
                 System.out.println("Err train: " + evaluator.getErr_train());
                 System.out.println("Err test:  " + evaluator.getErr_test());
             }
-			for (int j = 0; j < lts.size(); j++) {
+			for (int k = 0; k < lts.size(); k++) {
 	            // current sample
                 STrainingSample<X, Y> sample = lts.get(rand.nextInt(lts.size()));
 //                Set<Y> Y_range = instantiation.enumerateY();
@@ -86,13 +86,16 @@ public class SGDTrainer<X, Y> implements ITrainer<X, Y> {
                 // found y_pre continue
                 double [] gi = VectorOperations.minus(instantiation.psi(sample.input, y_pre), instantiation.psi(sample.input, sample.output));
 
-                for (int k = 0; k < w.length; k++) {
-                    gi[k] = (lambda * w[k] + gi[k]) * learning_rate;
+//                for (int j = 0; j < w.length; j++) {
+//                    gi[j] = (lambda * w[j] + gi[j]) * learning_rate;
+//                }
+//                w = VectorOperations.minus(w, gi);
+                for (int j = 0; j < w.length; j++) {
+                    w[j] = w[j] - this.learning_rate * (this.lambda * w[j] + gi[j]);
                 }
-                w = VectorOperations.minus(w, gi);
 			}
+
 		}
-		
 	}
 
 }

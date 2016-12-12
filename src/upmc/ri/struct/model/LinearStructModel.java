@@ -8,7 +8,7 @@ import upmc.ri.struct.instantiation.IStructInstantiation;
  */
 public abstract class  LinearStructModel<X, Y> implements IStructModel<X, Y> {
     public IStructInstantiation<X, Y> instantiation;
-    double [] w;
+    public double [] w;
 
     public LinearStructModel(IStructInstantiation<X, Y> instantiation, int dimpsi) {
         super();
