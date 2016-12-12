@@ -15,6 +15,9 @@ public class LinearStructModel_Ex<X, Y> extends LinearStructModel<X, Y> {
         super(instantiation, dimpsi);
 
     }
+    public void setInstantiation(IStructInstantiation<X, Y> instantiation) {
+        this.instantiation = instantiation;
+    }
     @Override
     public Y predict(STrainingSample<X, Y> ts) {
         IStructInstantiation<X, Y> instantiation = this.instantiation();
@@ -23,7 +26,7 @@ public class LinearStructModel_Ex<X, Y> extends LinearStructModel<X, Y> {
         Set<Y> Y_range = instantiation.enumerateY();
                 // loop set
         Y y_pre = null;
-        Double max_value = Double.MIN_VALUE;
+        Double max_value = - Double.MAX_VALUE;
         // initial max value
         Iterator<Y> itr = Y_range.iterator();
         while (itr.hasNext()) {

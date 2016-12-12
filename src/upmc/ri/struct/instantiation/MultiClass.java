@@ -13,8 +13,8 @@ import java.util.List;
  * Created by dexter on 26/11/2016.
  */
 public class MultiClass implements IStructInstantiation<double [], String>{
-    private Set<String> label_set;
-    private Map<String, Integer> matching;
+    public Set<String> label_set;
+    public Map<String, Integer> matching;
 
     public MultiClass(Set<String> label_set) {
         super();
