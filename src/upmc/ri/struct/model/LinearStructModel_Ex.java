@@ -26,7 +26,7 @@ public class LinearStructModel_Ex<X, Y> extends LinearStructModel<X, Y> {
         Set<Y> Y_range = instantiation.enumerateY();
                 // loop set
         Y y_pre = null;
-        Double max_value = - Double.MAX_VALUE;
+        Double max_value = Double.NEGATIVE_INFINITY;
         // initial max value
         Iterator<Y> itr = Y_range.iterator();
         while (itr.hasNext()) {
