@@ -24,7 +24,7 @@ public class RankingInstantiation implements IStructInstantiation<List<double []
             }
             coutPosive++;
             int countNegtive = 0;
-            for (int j = 0; i < binary.size(); i++) {
+            for (int j = 0; j < binary.size(); j++) {
                 if (binary.get(j) != -1) {
                     continue;
                 }

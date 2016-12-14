@@ -35,6 +35,13 @@ public class MuticlassHier {
             gt.add(ts.output);
         }
         instantiation.confusionMatrix(predictions, gt);
+        MultiClass instantiation_1 = new MultiClass(data.outputs());
+        linear_model.setInstantiation(instantiation_1);
+        evaluator.setModel(linear_model);
+        evaluator.evaluate();
+        System.out.println("Err train with 0-1: " + evaluator.getErr_train());
+        System.out.println("Err test with 0-1:  " + evaluator.getErr_test());
+
 
     }
 }
